@@ -41,7 +41,17 @@ bool is_unique2(string s)
 	if(s.length() > 128)
 		return false;		//Because there are only 128 different characters!
 
-	//Compare each character to every other character with nested for loops.
+    //Compare each character to every other character with nested for loops.
+    for(int i = 0; i < s.length(); i++)
+    {
+		for(int j = i+1; j < s.length();j++)
+		{
+			if(i == j)
+			{
+				return false;
+			}
+		}
+    }
 	//We pass through the string roughly once for each character, so we say the function has
 	//order n^2 where n is the string's length
 
@@ -55,6 +65,13 @@ bool is_unique3(string s)
 	sort(s.begin(), s.end());
 	
 	//Now we can step through the string to see if any adjacent characters are the same.
+	for(int i = 0; i < s.length()-1; i++)
+	{
+		if(i == i+1)
+		{
+			return false;
+		}
+	}
 	
 	return true;	//Replace this and test the function.
 
